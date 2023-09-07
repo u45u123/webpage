@@ -1,6 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
+const Toplayer = styled.div`
+    width: 100%;
+    height: 51px;
+    background: linear-gradient(to right, #ff6b6b, #ffb88c);
+    top: 0;
+    left: 0;
+    z-index: 1;
+`
+
 const Container = styled.div`
   width: 100%;
   height: calc(100vh - 30%);
@@ -58,6 +67,7 @@ const GradientButton = styled.button`
 function Question() {
   return (
     <Container>
+      <Toplayer/>
       <TextareaContainer>
         <Title>영상 자서전 만들기</Title>
         <Text>1. 당신의 어린 시절은 어땠나요</Text>
