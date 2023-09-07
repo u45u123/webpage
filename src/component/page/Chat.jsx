@@ -72,7 +72,7 @@ const Message = styled.div`
   align-self: ${(props) => (props.sender === "user" ? "flex-end" : "flex-start")};
 `;
 
-function ChatApp() {
+function Chat() {
   const [messages, setMessages] = useState([]);
   const [inputMessage, setInputMessage] = useState("");
 
@@ -123,4 +123,4 @@ function ChatApp() {
   );
 }
 
-export default ChatApp;
+export default Chat;

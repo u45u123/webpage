@@ -66,6 +66,17 @@ const GradientButton = styled.button`
   }
 `;
 
+const SmallButton = styled.button`
+  margin-top: 10px;
+  background-color: #ff6b6b;
+  color: white;
+  font-size: 14px;
+  padding: 5px 10px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+`;
+
 function Question() {
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
@@ -74,14 +85,25 @@ function Question() {
   const navigate = useNavigate(); // useHistory 대신 useNavigate를 사용하여 페이지 이동 처리
 
   const handleButtonClick = async () => {
-    navigate("/result")
-  }
+    try {
+      const response = await Callchatgptapi([text1, text2, text3]);
+      setGeneratedText(response);
+    } catch (error) {
+      // 오류 처리
+    }
+  };
+
+  const handleSmallButtonClick = () => {
+    // 작은 버튼 클릭 시 /result로 이동
+    navigate("/result");
+  };
 
   return (
     <Container>
       <Toplayer />
       <TextareaContainer>
         <Title>영상 자서전 만들기</Title>
+        <Text>1. 당신의 어린 시절은 어땠나요?</Text>
         <Textarea
           placeholder="300자 이내로 입력해주세요"
           value={text1}
@@ -100,6 +122,7 @@ function Question() {
           onChange={(e) => setText3(e.target.value)}
         />
         <GradientButton onClick={handleButtonClick}>다음으로</GradientButton>
+        <SmallButton onClick={handleSmallButtonClick}>작은 버튼</SmallButton>
       </TextareaContainer>
     </Container>
   );

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { useNavigate } from "react-router-dom";
 
 const Container = styled.div`
   width: 100%;
@@ -24,6 +25,9 @@ const GeneratedText = styled.div`
 `;
 
 function ResultPage({ generatedText }) {
+
+  const navigate = useNavigate();
+
   return (
     <Container>
       <GeneratedTextContainer>

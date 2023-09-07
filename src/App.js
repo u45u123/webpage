@@ -57,7 +57,7 @@ function App(props) {
       </MainTitleContainer>
       <Routes>
         <Route index element={<Question />} />
-        <Route path="/result" component={ResultPage}/>
+        <Route path="/result" element={<Chat />}/>
       </Routes>
     </BrowserRouter>
   );
