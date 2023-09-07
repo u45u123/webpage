@@ -3,6 +3,8 @@ import styled from "styled-components";
 import TextInput from "../ui/TextInput";
 import Button from "../ui/Button";
 import { useState } from "react";
+import "../../style.css";
+import Kakao from "../ui/Kakao";
 
 const Wrapper = styled.div`
     padding: 16px;
@@ -31,32 +33,18 @@ function PostWritePage(props) {
     const [content, setContent] = useState("");
 
     return(
-        <Wrapper>
-            <Container>
-                <TextInput
-                    height={20}
-                    value={title}
-                    onChange={(event) => {
-                        setTitle(event.target.value);
-                    }}
-                />
-
-                <TextInput
-                    height={400}
-                    value={content}
-                    onChange={(event) => {
-                        setContent(event.target.value);
-                    }}
-                />
-
-                <Button
-                    title="글 작성하기"
-                    onClick={() => {
-                        navigate("/");
-                    }}
-                />
-            </Container>
-        </Wrapper>
+        <div className="login-wrapper">
+        <h2>Login</h2>
+        <form method="post" action="서버의url" id="login-form">
+          <input type="text" name="userName" placeholder="Email" />
+          <input type="password" name="userPassword" placeholder="Password" />
+          <label htmlFor="remember-check">
+            <input type="checkbox" id="remember-check" />아이디 저장하기
+          </label>
+          <input type="submit" value="Login" />
+          <Kakao></Kakao>
+        </form>
+      </div>
     )
 }
 

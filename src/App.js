@@ -6,11 +6,14 @@ import {
 } from "react-router-dom";
 import styled from "styled-components";
 // Pages
-import MainPage from './component/page/MainPage';
+import MainPage from './component/page/Question';
 import PostWritePage from './component/page/PostWritePage';
 import PostViewPage from './component/page/PostViewPage';
+import Login from "./component/page/Login";
+import Question from "./component/page/Question";
 
 const MainTitleText = styled.p`
+    margin-top: 2.5%;
     font-size: 24px;
     font-weight: bold;
     text-align: center;
@@ -19,9 +22,9 @@ const MainTitleText = styled.p`
 function App(props) {
     return (
         <BrowserRouter>
-            <MainTitleText>소플의 미니 블로그</MainTitleText>
+            <MainTitleText>화양연화</MainTitleText>
             <Routes>
-                <Route index element={<MainPage />} />
+                <Route index element={<Question />} />
                 <Route path="post-write" element={<PostWritePage />} />
                 <Route path="post/:postId" element={<PostViewPage />} />
             </Routes>

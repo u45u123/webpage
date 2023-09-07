@@ -76,7 +76,6 @@ function PostViewPage(props) {
                 <CommentList comments={post.comments} />
 
                 <TextInput
-                    height={40}
                     value={comment}
                     onChange={(event) => {
                         setComment(event.target.value);
