@@ -30,15 +30,15 @@ const ChatContainer = styled.div`
 const ChatMessages = styled.div`
   flex: 1;
   padding: 10px;
-  background-color: #ffc4c4; /* 채팅 메시지 영역 배경색 */
+  background-color: #ffc4c4;
   overflow-y: scroll;
 `;
 
 const UserInput = styled.div`
   width: 1070px;
-  background-color: #fff; /* 사용자 입력 영역 배경색 */
+  background-color: #fff;
   display: flex;
-  justify-content: flex-end; /* 입력창을 오른쪽에 위치시키기 위해 */
+  justify-content: flex-end;
   align-items: center;
 `;
 
@@ -47,8 +47,8 @@ const InputField = styled.textarea`
   padding: 5px;
   border: 1px solid;
   border-radius: 5px;
-  resize: none; /* 사용자 크기 조정 비활성화 */
-  min-height: 60px; /* 최소 높이 조정 */
+  resize: none;
+  min-height: 60px;
   margin-top: 20px;
 `;
 
@@ -73,23 +73,24 @@ const Message = styled.div`
 `;
 
 function Chat() {
-  const [messages, setMessages] = useState([]);
-  const [inputMessage, setInputMessage] = useState("");
+  const [userMessages, setUserMessages] = useState([]); // 사용자가 입력한 메시지 배열
+  const [inputMessage, setInputMessage] = useState(""); // 사용자가 입력 중인 메시지
+  const [serverMessages, setServerMessages] = useState([]); // 서버에서 온 메시지 배열
 
   const sendMessage = async () => {
     if (inputMessage) {
       const newUserMessage = { text: inputMessage, sender: "user" };
-      setMessages([...messages, newUserMessage]);
+      setUserMessages([...userMessages, newUserMessage]);
       setInputMessage("");
 
       try {
         const response = await axios.post("/api/v1/chat-gpt/older", {
-          messages: [...messages, newUserMessage],
+          messages: [...userMessages, newUserMessage],
         });
 
         const aiResponse = response.data.messages[0].text;
         const newAIMessage = { text: aiResponse, sender: "ai" };
-        setMessages([...messages, newAIMessage]);
+        setServerMessages([...serverMessages, newAIMessage]);
       } catch (error) {
         console.error("OpenAI와 통신 중 오류가 발생했습니다.", error);
       }
@@ -102,7 +103,15 @@ function Chat() {
       <Container>
         <ChatContainer>
           <ChatMessages>
-            {messages.map((message, index) => (
+            {/* 사용자가 입력한 메시지를 표시 */}
+            {userMessages.map((message, index) => (
+              <Message key={index} sender={message.sender}>
+                {message.text}
+              </Message>
+            ))}
+
+            {/* 서버에서 온 메시지를 표시 */}
+            {serverMessages.map((message, index) => (
               <Message key={index} sender={message.sender}>
                 {message.text}
               </Message>
