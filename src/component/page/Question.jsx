@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, { useState } from "react";
 import styled from "styled-components";
 import Callchatgptapi from "./Callchatgptapi";
@@ -11,6 +12,10 @@ const Toplayer = styled.div`
   left: 0;
   z-index: 1;
 `;
+=======
+import React from "react";
+import styled from "styled-components";
+>>>>>>> 6097a3fd850383b99c2f9dc42ad0d8858806edac
 
 const Container = styled.div`
   width: 100%;
@@ -47,7 +52,11 @@ const Text = styled.div`
 
 const Title = styled.div`
   margin-bottom: 100px;
+<<<<<<< HEAD
   font-size: 40px;
+=======
+  font-size: 20px;
+>>>>>>> 6097a3fd850383b99c2f9dc42ad0d8858806edac
 `;
 
 const GradientButton = styled.button`
@@ -66,6 +75,7 @@ const GradientButton = styled.button`
   }
 `;
 
+<<<<<<< HEAD
 const SmallButton = styled.button`
   margin-top: 10px;
   background-color: #ff6b6b;
@@ -123,6 +133,20 @@ function Question() {
         />
         <GradientButton onClick={handleButtonClick}>다음으로</GradientButton>
         <SmallButton onClick={handleSmallButtonClick}>작은 버튼</SmallButton>
+=======
+function Question() {
+  return (
+    <Container>
+      <TextareaContainer>
+        <Title>영상 자서전 만들기</Title>
+        <Text>1. 당신의 어린 시절은 어땠나요</Text>
+        <Textarea placeholder="300자 이내로 입력해주세요"></Textarea>
+        <Text>2. 당신의 가장 빛난 시절은 어땠나요?</Text>
+        <Textarea placeholder="300자 이내로 입력해주세요"></Textarea>
+        <Text>3. 당신의 현재 시절은 어떤가요?</Text>
+        <Textarea placeholder="300자 이내로 입력해주세요"></Textarea>
+        <GradientButton>다음으로</GradientButton>
+>>>>>>> 6097a3fd850383b99c2f9dc42ad0d8858806edac
       </TextareaContainer>
     </Container>
   );

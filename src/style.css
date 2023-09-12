@@ -1,9 +1,12 @@
+<<<<<<< HEAD
 @import url(//fonts.googleapis.com/earlyaccess/jejumyeongjo.css);
 
 .jejumyeongjo * { /** 폰트 영문 이름 지정 **/
     font-family: 'Jeju Myeongjo', serif;
    }
 
+=======
+>>>>>>> 6097a3fd850383b99c2f9dc42ad0d8858806edac
 *{
     padding: 0;
     margin: 0;
